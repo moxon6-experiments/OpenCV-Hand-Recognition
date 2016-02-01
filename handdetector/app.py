@@ -48,7 +48,7 @@ class HandDetectorApp:
         cv2.imshow("Full Frame", full_frame)
 
 
-#TODO Generalise region getters
+# TODO Generalise region getters
 
 def get_left_region(full_frame):
     height, width = full_frame.shape[:2]
