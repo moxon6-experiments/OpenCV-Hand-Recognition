@@ -44,7 +44,8 @@ class HandDetectorApp:
     def display_window(self, full_frame):
         if max([hd.background_training for hd in self.hand_detectors]) > 0:
             frames = max([hd.background_training for hd in self.hand_detectors])
-            cv2.putText(full_frame, "Training Background Removal: Frames Remaining: %s" % frames, (30, 30), cv2.FONT_HERSHEY_COMPLEX_SMALL, 0.8, (0, 0, 255), 1, cv2.LINE_AA);
+            cv2.putText(full_frame, "Training Background Removal: Frames Remaining: %s" % frames, (30, 30),
+                        cv2.FONT_HERSHEY_COMPLEX_SMALL, 0.8, (0, 0, 255), 1, cv2.LINE_AA)
         cv2.imshow("Full Frame", full_frame)
 
 

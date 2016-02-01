@@ -6,6 +6,13 @@ def dist(v1, v2):
     return np.linalg.norm(np.array(v1)-v2)
 
 
+def get_angle(v1, v2):
+    v1 = v1 / np.linalg.norm(v1)
+    v2 = v2 / np.linalg.norm(v2)
+    cos_theta = np.dot(v1, v2)
+    return np.arccos(cos_theta)*(180/np.pi)
+
+
 class VideoCamera:
     def __init__(self, camera_id):
         self.cam = cv2.VideoCapture(camera_id)

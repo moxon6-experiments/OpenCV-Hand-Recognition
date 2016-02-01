@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-from .util import dist
+from .util import dist, get_angle
 from .drawables import Hand
 
 
@@ -112,8 +112,8 @@ class HandDetector:
         processed_finger_points = []
         for start_point, far_point, end_point in finger_points[1:]:
             finger_length = dist(far_point, end_point)  # Length of finger
-            if finger_length > 30 and (dist(start_point, palm_center) > palm_radius*0.9):
-                if np.mean([start_point[1], end_point[1]]) < palm_center[1] - palm_radius:
+            if finger_length > palm_radius * 0.9 and (dist(start_point, palm_center) > palm_radius*0.9):
+                if get_angle(start_point - far_point, end_point - far_point) < 80:
                     processed_finger_points.append([start_point, far_point, end_point])
         return processed_finger_points
 
