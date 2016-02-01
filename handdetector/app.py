@@ -17,6 +17,7 @@ class HandDetectorApp:
                 self.detect_hands(full_frame)
             except NoFrameException:
                 continue
+            self.keypress()
 
     def detect_hands(self, full_frame):
         for hand_detector, get_region in zip(self.hand_detectors, self.active_regions):
@@ -27,15 +28,13 @@ class HandDetectorApp:
             except NoHandException:
                 pass
         self.display_window(full_frame)
-        if self.keypress():
-            self.running = False
 
     def keypress(self):
         key_val = cv2.waitKey(1)
         if key_val < 0:
             return False
         if key_val == 27:
-            return True
+            self.running = False
         else:
             pressed_key = chr(key_val).lower()
             if pressed_key == "r":
