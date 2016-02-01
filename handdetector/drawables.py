@@ -10,6 +10,7 @@ class BlankDrawable(DrawAble):
     def draw(self, im):
         pass
 
+
 class Fingers(DrawAble):
     def __init__(self, fingers):
         self.fingers = fingers
